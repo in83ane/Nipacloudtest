@@ -7,4 +7,9 @@ if (!supabaseUrl || !supabaseServiceKey) {
   console.warn('Supabase credentials missing. Data persistence might fail.');
 }
 
-export const supabase = createClient(supabaseUrl, supabaseServiceKey);
+// Pass a dummy URL if missing so the Serverless Function doesn't crash on startup.
+// It will fail gracefully when trying to make a query instead.
+export const supabase = createClient(
+  supabaseUrl || 'https://placeholder.supabase.co', 
+  supabaseServiceKey || 'placeholder-key'
+);
