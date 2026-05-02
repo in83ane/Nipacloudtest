@@ -9,12 +9,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Mount ticket routes at root - Vercel passes the full path
-// We mount it under /api/tickets so Express can match /, /:id, /:id/history
+// Vercel rewrites /api/* to this file. 
+// We mount the router at /api/tickets so the paths align perfectly with the frontend fetch requests.
 app.use('/api/tickets', ticketRouter);
 app.use(errorHandler as any);
 
 export default (req: VercelRequest, res: VercelResponse) => {
-  // @ts-ignore - VercelRequest is compatible enough with IncomingMessage
   return app(req, res);
 };
+
