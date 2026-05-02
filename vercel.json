@@ -1,20 +1,16 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "server.ts",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": { "distDir": "dist" }
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "functions": {
+    "api/tickets.ts": {
+      "runtime": "nodejs20.x"
     }
-  ],
+  },
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "/server.ts"
+      "source": "/api/tickets/:path*",
+      "destination": "/api/tickets"
     },
     {
       "source": "/(.*)",
