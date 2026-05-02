@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+@layer base {
+  body {
+    @apply bg-slate-50 dark:bg-[#0e0e11] text-slate-900 dark:text-[#e3e3e3];
+  }
+  :root {
+    --chart-grid-color: #f1f5f9;
+    --chart-text-color: #64748b;
+    --chart-tooltip-bg: #ffffff;
+    --chart-tooltip-border: #f1f5f9;
+    --chart-tooltip-text: #0f172a;
+  }
+  .dark {
+    --chart-grid-color: rgba(255, 255, 255, 0.1);
+    --chart-text-color: #9aa0a6;
+    --chart-tooltip-bg: #1e1f20;
+    --chart-tooltip-border: #3c4043;
+    --chart-tooltip-text: #e3e3e3;
+  }
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+  border-radius: 999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #cbd5e1;
+}
+
